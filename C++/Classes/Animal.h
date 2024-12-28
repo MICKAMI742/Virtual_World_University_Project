@@ -1,11 +1,13 @@
+#pragma once
 #include "Organism.h"
 #include "World.h"
 #include <random>
-
+// animals will be represented with big letters on the map
 class Animal : public Organism
 {
 
 public:
+    Animal(string genre, int power, int initiative, int x, int y) : Organism(genre, power, initiative, x, y) {};
     void action() override
     {
         std::random_device rd;
@@ -41,7 +43,21 @@ public:
         }
     };
 
-    void collision(Organism *otherOrganism) override {
-
+    void collision(Organism *otherOrganism) override
+    {
+        if (this->getGenre() == otherOrganism->getGenre())
+        {
+        }
+        else
+        {
+            if (this->getPower() >= otherOrganism->getPower())
+            {
+                setPosition(otherOrganism->getX(), otherOrganism->getY());
+            }
+            else
+            {
+                setPosition(getX(), getY());
+            }
+        }
     };
 };
