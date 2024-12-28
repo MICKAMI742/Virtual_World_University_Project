@@ -4,26 +4,44 @@
 
 class Animal : public Organism
 {
-private:
-    // it helps me to generate random x and y to place my animal on the map
-    std::random_device rd;
-    std::mt19937 gen;
-    std::uniform_int_distribution<int> distribX;
-    std::uniform_int_distribution<int> distribY;
 
 public:
-    // function draws random coordinates of next free space and puts there animal
-    void action()
+    void action() override
     {
-        int x = distribX(gen);
-        int y = distribY(gen);
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(0, 3);
+        int direction = dis(gen);
+        int x = getX();
+        int y = getY();
+        /*
+            0 - up
+            1 - right
+            2 - down
+            3 - left
+        */
+        switch (direction)
+        {
+        case 0:
+            if (y - 1 >= 0)
+                setPosition(x, y - 1);
+            break;
+        case 1:
+            if (x + 1 < 20)
+                setPosition(x + 1, y);
+            break;
+        case 2:
+            if (y + 1 < 20)
+                setPosition(x, y + 1);
+            break;
+        case 3:
+            if (x - 1 >= 0)
+                setPosition(x - 1, y);
+            break;
+        }
     };
 
-    // function defines what happens when animals have to fight
-    void collision() {
+    void collision(Organism *otherOrganism) override {
 
     };
-
-    // constructor
-    Animal(int power, int initiative, int x, int y, World &world);
 };
