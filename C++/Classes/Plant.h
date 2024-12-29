@@ -6,11 +6,11 @@ class Plant : public Organism
 
 public:
     Plant(string genre, int power, int initiative, int x, int y) : Organism(genre, power, 0, x, y) {};
-    void action() override {
+    void action(World &world) override {
 
     };
 
-    void collision(Organism *otherOrganism) override {
+    void collision(World &world, Organism *otherOrganism) override {
 
     };
 };

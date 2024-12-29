@@ -11,4 +11,16 @@ public:
     {
         return "C";
     };
+
+    void collision(World &world, Organism *otherOrganism) override
+    {
+        if (this->getGenre() == otherOrganism->getGenre())
+        {
+            world.addOrganism(new Capibara(this->getX(), this->getY()));
+        }
+        else
+        {
+            Animal::collision(world, otherOrganism);
+        }
+    }
 };

@@ -1,3 +1,4 @@
+#pragma once
 #include "../Plant.h"
 #include <iostream>
 using namespace std;

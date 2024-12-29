@@ -12,7 +12,7 @@ public:
         return "B";
     };
 
-    void collision(Organism *otherOrganism) override
+    void collision(World &world, Organism *otherOrganism) override
     {
         delete otherOrganism;
     }

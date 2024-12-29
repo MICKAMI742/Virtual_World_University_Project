@@ -12,7 +12,7 @@ public:
         return "g";
     };
 
-    void collision(Organism *otherOrganism) override
+    void collision(World &world, Organism *otherOrganism) override
     {
         otherOrganism->setPower(otherOrganism->getPower() + 3);
     }

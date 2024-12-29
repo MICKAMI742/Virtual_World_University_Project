@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+// forward declaration
+class World;
 // Organism class is a base class for all other classes
 class Organism
 {
@@ -13,8 +15,8 @@ private:
     int y;
 
 public:
-    virtual void action() = 0;
-    virtual void collision(Organism *otherOrganism) = 0;
+    virtual void action(World &world) = 0;
+    virtual void collision(World &world, Organism *otherOrganism) = 0;
     virtual string draw() = 0;
     Organism(string genre, int power, int initiative, int x, int y) : genre(genre), power(power), initiative(initiative), x(x), y(y) {};
 

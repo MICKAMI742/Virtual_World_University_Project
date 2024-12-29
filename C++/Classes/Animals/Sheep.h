@@ -11,4 +11,16 @@ public:
     {
         return "S";
     };
+
+    void collision(World &world, Organism *otherOrganism) override
+    {
+        if (this->getGenre() == otherOrganism->getGenre())
+        {
+            world.addOrganism(new Sheep(this->getX(), this->getY()));
+        }
+        else
+        {
+            Animal::collision(world, otherOrganism);
+        }
+    }
 };
