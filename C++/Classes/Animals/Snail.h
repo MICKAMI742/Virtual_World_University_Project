@@ -16,7 +16,8 @@ public:
     {
         if (this->getGenre() == otherOrganism->getGenre())
         {
-            world.addOrganism(new Snail(this->getX(), this->getY()));
+            if (!world.isOrganismThere(this->getX(), this->getY() - 1))
+                world.addOrganism(new Snail(this->getX(), this->getY() - 1));
         }
         else
         {

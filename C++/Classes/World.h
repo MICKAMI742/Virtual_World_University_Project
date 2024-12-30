@@ -42,8 +42,7 @@ public:
         {
             for (int j = 0; j < 20; j++)
             {
-                Grass grass(j, i);
-                world[i][j] = grass.draw(); // empty field
+                world[i][j] = "_"; // dirt
             }
         }
         for (int i = 0; i < numberOfOrganisms; i++)
@@ -76,7 +75,7 @@ public:
 
     bool isOrganismThere(int x, int y)
     {
-        if (world[x][y] != "v")
+        if (world[x][y] != "_")
         {
             return true;
         }
@@ -111,7 +110,11 @@ public:
                 int x = organisms[i]->getX();
                 int y = organisms[i]->getY();
                 delete organisms[i];
-                organisms[i] = new Grass(x, y);
+                numberOfOrganisms--;
+                for (int j = i; j < numberOfOrganisms - 1; j++)
+                {
+                    organisms[j] = organisms[j + 1];
+                }
                 break;
             }
         }
