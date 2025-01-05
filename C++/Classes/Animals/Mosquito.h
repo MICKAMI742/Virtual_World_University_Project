@@ -16,7 +16,7 @@ public:
     {
         if (this->getGenre() == otherOrganism->getGenre())
         {
-            if (!world.isOrganismThere(this->getX(), this->getY() - 1))
+            if (!world.isOrganismThere(this->getX(), this->getY() - 1) && this->checkIfFitsInMap(this->getX(), this->getY() - 1))
                 world.addOrganism(new Mosquito(this->getX(), this->getY() - 1));
         }
         else

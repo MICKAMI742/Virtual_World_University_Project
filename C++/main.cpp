@@ -35,6 +35,7 @@ int main()
         cout << "Michal Kaminski 200788" << endl;
         world.makeTurn();
         world.drawWorld();
+        world.statsAfterRound();
         cout << "Press any key to continue or 'q' to quit: " << endl;
         char key = _getch();
         if (key == 'q')

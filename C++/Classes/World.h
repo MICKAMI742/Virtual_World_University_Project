@@ -9,6 +9,8 @@ private:
     Organism **organisms;
     int capacity;
     int numberOfOrganisms;
+    int numberOfBorn = 0; // number of born in one round
+    int numberOfDead = 0; // number of dead in one round
     string world[20][20];
 
 public:
@@ -65,6 +67,7 @@ public:
         {
             organisms[numberOfOrganisms] = organism;
             numberOfOrganisms++;
+            numberOfBorn++;
         }
     };
 
@@ -111,6 +114,7 @@ public:
                 int y = organisms[i]->getY();
                 delete organisms[i];
                 numberOfOrganisms--;
+                numberOfDead++;
                 for (int j = i; j < numberOfOrganisms - 1; j++)
                 {
                     organisms[j] = organisms[j + 1];
@@ -118,6 +122,16 @@ public:
                 break;
             }
         }
+    }
+
+    void statsAfterRound()
+    {
+        cout << endl;
+        cout << "Number of organisms: " << numberOfOrganisms << endl;
+        cout << "Number of born: " << numberOfBorn << endl;
+        cout << "Number of dead: " << numberOfDead << endl;
+        numberOfBorn = 0;
+        numberOfDead = 0;
     }
 
     // Destructor
