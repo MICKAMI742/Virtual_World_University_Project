@@ -27,6 +27,9 @@ int main()
     world.addOrganism(new Sheep(12, 13));
     world.addOrganism(new Sheep(12, 14));
     world.addOrganism(new Snail(12, 12));
+    world.addOrganism(new Guarana(13, 13));
+    world.addOrganism(new Berry(14, 14));
+    world.addOrganism(new Grass(15, 15));
     bool simulationState = true;
     while (simulationState)
     {

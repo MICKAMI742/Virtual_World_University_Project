@@ -1,5 +1,6 @@
 #pragma once
 #include "Organism.h"
+#include <random>
 // plants will be represented with small letters on the map
 class Plant : public Organism
 {
@@ -13,4 +14,16 @@ public:
     void collision(World &world, Organism *otherOrganism) override {
 
     };
+
+    bool canSeed()
+    {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(0, 100);
+        if (dis(gen) < 10)
+        {
+            return true;
+        }
+        return false;
+    }
 };

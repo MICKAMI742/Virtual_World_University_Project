@@ -1,5 +1,6 @@
 #include "../Animal.h"
 #include <iostream>
+#include <random>
 using namespace std;
 
 class Snail : public Animal
@@ -11,6 +12,19 @@ public:
     {
         return "G"; // G for snail (gastropod)
     };
+
+    void action(World &world) override
+    {
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<> dis(0, 3);
+        uniform_int_distribution<> dis2(0, 100);
+        int direction = dis(gen);
+        if (dis2(gen) <= 10)
+        {
+            Animal::action(world);
+        }
+    }
 
     void collision(World &world, Organism *otherOrganism) override
     {

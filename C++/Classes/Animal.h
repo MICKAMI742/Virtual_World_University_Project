@@ -80,4 +80,13 @@ public:
             world.removeOrganism(this);
         }
     }
+
+    bool checkIfFitsInMap(int x, int y)
+    {
+        if (x >= 0 && x < 20 && y >= 0 && y < 20)
+        {
+            return true;
+        }
+        return false;
+    }
 };

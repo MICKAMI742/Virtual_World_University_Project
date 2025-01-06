@@ -102,6 +102,13 @@ public:
     World(int capacity) : capacity(capacity), numberOfOrganisms(0)
     {
         organisms = new Organism *[capacity];
+        for (int i = 0; i < 20; i++)
+        {
+            for (int j = 0; j < 20; j++)
+            {
+                organisms[i] = nullptr;
+            }
+        }
     };
 
     void removeOrganism(Organism *organism)
