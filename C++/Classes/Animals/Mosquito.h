@@ -12,6 +12,17 @@ public:
         return "M";
     };
 
+    void action(World &world) override
+    {
+        int points = addPointsToStrengthWhenMosquitosNearby(world);
+        if (points > 0)
+        {
+            this->setPower(this->getPower() + points);
+            this->setInitiative(this->getInitiative() + points);
+        }
+        Animal::action(world);
+    }
+
     void collision(World &world, Organism *otherOrganism) override
     {
         if (this->getGenre() == otherOrganism->getGenre())
@@ -23,5 +34,43 @@ public:
         {
             Animal::collision(world, otherOrganism);
         }
+    }
+
+    int addPointsToStrengthWhenMosquitosNearby(World &world)
+    {
+        int points = 0;
+        if (world.isOrganismThere(this->getX(), this->getY() - 1))
+        {
+            Organism *organism = world.checkCollision(this->getX(), this->getY() - 1);
+            if (organism->getGenre() == "Mosquito")
+            {
+                points++;
+            }
+        }
+        if (world.isOrganismThere(this->getX() + 1, this->getY()))
+        {
+            Organism *organism = world.checkCollision(this->getX() + 1, this->getY());
+            if (organism->getGenre() == "Mosquito")
+            {
+                points++;
+            }
+        }
+        if (world.isOrganismThere(this->getX(), this->getY() + 1))
+        {
+            Organism *organism = world.checkCollision(this->getX(), this->getY() + 1);
+            if (organism->getGenre() == "Mosquito")
+            {
+                points++;
+            }
+        }
+        if (world.isOrganismThere(this->getX() - 1, this->getY()))
+        {
+            Organism *organism = world.checkCollision(this->getX() - 1, this->getY());
+            if (organism->getGenre() == "Mosquito")
+            {
+                points++;
+            }
+        }
+        return points;
     }
 };

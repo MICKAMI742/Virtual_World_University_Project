@@ -37,5 +37,10 @@ public:
         this->power = power;
     }
 
+    void setInitiative(int initiative)
+    {
+        this->initiative = initiative;
+    }
+
     virtual ~Organism() {};
 };

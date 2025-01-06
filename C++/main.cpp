@@ -36,8 +36,8 @@ int main()
         // system("cls");
         world.sortOrganismsByInitiative();
         cout << "Michal Kaminski 200788" << endl;
-        world.makeTurn();
         world.drawWorld();
+        world.makeTurn();
         world.statsAfterRound();
         cout << "Press any key to continue or 'q' to quit: " << endl;
         char key = _getch();
