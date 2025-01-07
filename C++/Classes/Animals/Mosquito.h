@@ -5,7 +5,7 @@ using namespace std;
 class Mosquito : public Animal
 {
 public:
-    Mosquito(int x, int y) : Animal("Mosqutio", 1, 1, x, y) {};
+    Mosquito(int x, int y) : Animal("Mosquito", 1, 1, x, y) {};
 
     string draw() override
     {
@@ -14,12 +14,8 @@ public:
 
     void action(World &world) override
     {
-        int points = addPointsToStrengthWhenMosquitosNearby(world);
-        if (points > 0)
-        {
-            this->setPower(this->getPower() + points);
-            this->setInitiative(this->getInitiative() + points);
-        }
+        setDefault();
+        addPowerBecauseMosquitosInGroupStronger(world);
         Animal::action(world);
     }
 
@@ -36,41 +32,34 @@ public:
         }
     }
 
-    int addPointsToStrengthWhenMosquitosNearby(World &world)
+    int numberOfNearbyMosquitos(World &world)
     {
-        int points = 0;
-        if (world.isOrganismThere(this->getX(), this->getY() - 1))
+        int mosquitos = 0;
+        for (int i = -1; i <= 1; i++)
         {
-            Organism *organism = world.checkCollision(this->getX(), this->getY() - 1);
-            if (organism->getGenre() == "Mosquito")
+            for (int j = -1; j <= 1; j++)
             {
-                points++;
+                int x = this->getX() + i;
+                int y = this->getY() + j;
+                Organism *organism = world.checkCollision(x, y);
+                if (organism != nullptr && organism->getGenre() == "Mosquito" && organism != this)
+                {
+                    mosquitos++;
+                }
             }
         }
-        if (world.isOrganismThere(this->getX() + 1, this->getY()))
-        {
-            Organism *organism = world.checkCollision(this->getX() + 1, this->getY());
-            if (organism->getGenre() == "Mosquito")
-            {
-                points++;
-            }
-        }
-        if (world.isOrganismThere(this->getX(), this->getY() + 1))
-        {
-            Organism *organism = world.checkCollision(this->getX(), this->getY() + 1);
-            if (organism->getGenre() == "Mosquito")
-            {
-                points++;
-            }
-        }
-        if (world.isOrganismThere(this->getX() - 1, this->getY()))
-        {
-            Organism *organism = world.checkCollision(this->getX() - 1, this->getY());
-            if (organism->getGenre() == "Mosquito")
-            {
-                points++;
-            }
-        }
-        return points;
+        return mosquitos;
+    }
+
+    void setDefault()
+    {
+        this->setPower(1);
+        this->setInitiative(1);
+    }
+
+    void addPowerBecauseMosquitosInGroupStronger(World &world)
+    {
+        this->setPower(this->getPower() + numberOfNearbyMosquitos(world));
+        this->setInitiative(this->getInitiative() + numberOfNearbyMosquitos(world));
     }
 };

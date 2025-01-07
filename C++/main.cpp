@@ -16,20 +16,11 @@ using namespace std;
 int main()
 {
     World world(20 * 20);
-    world.addOrganism(new Wolf(10, 10));
-    world.addOrganism(new Wolf(19, 9));
-    world.addOrganism(new Wolf(19, 10));
-    world.addOrganism(new Capibara(9, 19));
-    world.addOrganism(new Capibara(19, 19));
-    world.addOrganism(new Capibara(19, 18));
-    world.addOrganism(new Sheep(11, 11));
-    world.addOrganism(new Sheep(12, 11));
-    world.addOrganism(new Sheep(12, 13));
-    world.addOrganism(new Sheep(12, 14));
-    world.addOrganism(new Snail(12, 12));
-    world.addOrganism(new Guarana(13, 13));
-    world.addOrganism(new Berry(14, 14));
-    world.addOrganism(new Grass(15, 15));
+    world.addOrganism(new Mosquito(0, 0));
+    world.addOrganism(new Mosquito(1, 0));
+    world.addOrganism(new Mosquito(2, 0));
+    world.addOrganism(new Mosquito(3, 0));
+    world.addOrganism(new Mosquito(0, 1));
     bool simulationState = true;
     while (simulationState)
     {
