@@ -1,5 +1,6 @@
 #include "../Animal.h"
 #include <iostream>
+#include <random>
 using namespace std;
 
 class Mosquito : public Animal
@@ -23,7 +24,7 @@ public:
     {
         if (this->getGenre() == otherOrganism->getGenre())
         {
-            if (!world.isOrganismThere(this->getX(), this->getY() - 1) && this->checkIfFitsInMap(this->getX(), this->getY() - 1))
+            if (world.checkCollision(this->getX(), this->getY() - 1) == nullptr && this->checkIfFitsInMap(this->getX(), this->getY() - 1))
                 world.addOrganism(new Mosquito(this->getX(), this->getY() - 1));
         }
         else
@@ -32,7 +33,7 @@ public:
         }
     }
 
-    int numberOfNearbyMosquitos(World &world)
+    int numberOfNearbyMosquitos(World &world) // count mosquitos in group
     {
         int mosquitos = 0;
         for (int i = -1; i <= 1; i++)
@@ -51,13 +52,13 @@ public:
         return mosquitos;
     }
 
-    void setDefault()
+    void setDefault() // set power and initiative to default values
     {
         this->setPower(1);
         this->setInitiative(1);
     }
 
-    void addPowerBecauseMosquitosInGroupStronger(World &world)
+    void addPowerBecauseMosquitosInGroupStronger(World &world) // add power and initiative because of mosquitos in group
     {
         this->setPower(this->getPower() + numberOfNearbyMosquitos(world));
         this->setInitiative(this->getInitiative() + numberOfNearbyMosquitos(world));

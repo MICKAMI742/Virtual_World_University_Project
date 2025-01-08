@@ -85,7 +85,7 @@ public:
         return false;
     };
 
-    // checks for collision with other animals
+    // checks collision with other animals
     Organism *checkCollision(int x, int y)
     {
         for (int i = 0; i < numberOfOrganisms; i++)
@@ -139,6 +139,14 @@ public:
         cout << "Number of dead: " << numberOfDead << endl;
         numberOfBorn = 0;
         numberOfDead = 0;
+    }
+
+    void writeAllOrganisms()
+    {
+        for (int i = 0; i < numberOfOrganisms; i++)
+        {
+            cout << "g: " << organisms[i]->getGenre() << " p: " << organisms[i]->getPower() << " i: " << organisms[i]->getInitiative() << " x: " << organisms[i]->getX() << " y: " << organisms[i]->getY() << endl;
+        }
     }
 
     // Destructor

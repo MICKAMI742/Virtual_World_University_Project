@@ -12,9 +12,9 @@ public:
 
     void action(World &world) override
     {
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(0, 3);
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<> dis(0, 3);
         int direction = dis(gen);
         int x = getX();
         int y = getY();
@@ -33,7 +33,10 @@ public:
                 {
                     collision(world, world.checkCollision(x, y - 1));
                 }
-                setPosition(x, y - 1);
+                else
+                {
+                    setPosition(x, y - 1);
+                }
             }
             break;
         case 1:
@@ -43,7 +46,10 @@ public:
                 {
                     collision(world, world.checkCollision(x + 1, y));
                 }
-                setPosition(x + 1, y);
+                else
+                {
+                    setPosition(x + 1, y);
+                }
             }
             break;
         case 2:
@@ -53,7 +59,10 @@ public:
                 {
                     collision(world, world.checkCollision(x, y + 1));
                 }
-                setPosition(x, y + 1);
+                else
+                {
+                    setPosition(x, y + 1);
+                }
             }
             break;
         case 3:
@@ -63,20 +72,34 @@ public:
                 {
                     collision(world, world.checkCollision(x - 1, y));
                 }
-                setPosition(x - 1, y);
+                else
+                {
+                    setPosition(x - 1, y);
+                }
             }
             break;
         }
     };
 
+    bool willBeBeaten(World &world, Organism *otherOrganism)
+    {
+        if (this->getPower() < otherOrganism->getPower())
+        {
+            return true;
+        }
+        return false;
+    }
+
     void collision(World &world, Organism *otherOrganism) override
     {
         if (this->getPower() >= otherOrganism->getPower())
         {
+            setPosition(otherOrganism->getX(), otherOrganism->getY());
             world.removeOrganism(otherOrganism);
         }
         else
         {
+            otherOrganism->setPosition(this->getX(), this->getY());
             world.removeOrganism(this);
         }
     }

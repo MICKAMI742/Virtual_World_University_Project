@@ -21,6 +21,7 @@ int main()
     world.addOrganism(new Mosquito(2, 0));
     world.addOrganism(new Mosquito(3, 0));
     world.addOrganism(new Mosquito(0, 1));
+    world.addOrganism(new Capibara(1, 1));
     bool simulationState = true;
     while (simulationState)
     {
@@ -28,8 +29,9 @@ int main()
         world.sortOrganismsByInitiative();
         cout << "Michal Kaminski 200788" << endl;
         world.drawWorld();
-        world.makeTurn();
         world.statsAfterRound();
+        world.writeAllOrganisms();
+        world.makeTurn();
         cout << "Press any key to continue or 'q' to quit: " << endl;
         char key = _getch();
         if (key == 'q')
