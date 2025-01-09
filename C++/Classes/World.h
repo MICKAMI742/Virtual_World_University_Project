@@ -1,6 +1,5 @@
 #pragma once
 #include "Organism.h"
-#include "Plants/Grass.h"
 using namespace std;
 
 class World
@@ -11,9 +10,11 @@ private:
     int numberOfOrganisms;
     int numberOfBorn = 0; // number of born in one round
     int numberOfDead = 0; // number of dead in one round
+    int numberOfEatenPlants = 0;
     string world[20][20];
 
 public:
+    // sorts organisms by they initiative and age
     void sortOrganismsByInitiative()
     {
         for (int i = 0; i < numberOfOrganisms; i++)
@@ -71,11 +72,13 @@ public:
         }
     };
 
+    // returns number of organisms
     int getNumberOfOrganisms()
     {
         return numberOfOrganisms;
     };
 
+    // checks if there is an organism on the given position on map
     bool isOrganismThere(int x, int y)
     {
         if (world[x][y] != "_")
@@ -111,10 +114,15 @@ public:
         }
     };
 
+    // removes organism from the table and moves another organism to it's place
     void removeOrganism(Organism *organism)
     {
         for (int i = 0; i < numberOfOrganisms; i++)
         {
+            if (organisms[i]->getGenre() == "Berry" || organisms[i]->getGenre() == "Guarana")
+            {
+                numberOfEatenPlants++;
+            }
             if (organisms[i] == organism)
             {
                 int x = organisms[i]->getX();
@@ -122,31 +130,26 @@ public:
                 delete organisms[i];
                 numberOfOrganisms--;
                 numberOfDead++;
-                for (int j = i; j < numberOfOrganisms - 1; j++)
+                for (int j = i; j < numberOfOrganisms; j++)
                 {
                     organisms[j] = organisms[j + 1];
                 }
+                organisms[numberOfOrganisms] = nullptr; // Set the last element to nullptr
                 break;
             }
         }
     }
-
+    // displays statistics after round
     void statsAfterRound()
     {
         cout << endl;
         cout << "Number of organisms: " << numberOfOrganisms << endl;
         cout << "Number of born: " << numberOfBorn << endl;
         cout << "Number of dead: " << numberOfDead << endl;
+        cout << "Number of eaten plants: " << numberOfEatenPlants << endl;
         numberOfBorn = 0;
         numberOfDead = 0;
-    }
-
-    void writeAllOrganisms()
-    {
-        for (int i = 0; i < numberOfOrganisms; i++)
-        {
-            cout << "g: " << organisms[i]->getGenre() << " p: " << organisms[i]->getPower() << " i: " << organisms[i]->getInitiative() << " x: " << organisms[i]->getX() << " y: " << organisms[i]->getY() << endl;
-        }
+        numberOfEatenPlants = 0;
     }
 
     // Destructor

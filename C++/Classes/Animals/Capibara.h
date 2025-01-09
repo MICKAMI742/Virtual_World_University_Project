@@ -1,5 +1,6 @@
 #include "../Animal.h"
 #include <iostream>
+#include <random>
 using namespace std;
 
 class Capibara : public Animal
@@ -9,7 +10,14 @@ public:
 
     string draw() override
     {
-        return "C";
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<> dis(0, 1);
+        int number = dis(gen);
+        if (number == 0)
+            return "C";
+        else
+            return "v"; // capibara can hide in grass
     };
 
     void collision(World &world, Organism *otherOrganism) override

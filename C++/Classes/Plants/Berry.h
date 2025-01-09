@@ -6,7 +6,7 @@ using namespace std;
 class Berry : public Plant
 {
 public:
-    Berry(int x, int y) : Plant("Berry", 99, 0, x, y) {};
+    Berry(int x, int y) : Plant("Berry", 9, 0, x, y) {};
 
     string draw() override
     {
@@ -33,5 +33,6 @@ public:
     void collision(World &world, Organism *otherOrganism) override
     {
         world.removeOrganism(otherOrganism);
+        world.removeOrganism(this);
     }
 };
