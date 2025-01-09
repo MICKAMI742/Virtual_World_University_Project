@@ -6,12 +6,14 @@ class World
 {
 private:
     Organism **organisms;
+    int width;
+    int height;
     int capacity;
     int numberOfOrganisms;
     int numberOfBorn = 0; // number of born in one round
     int numberOfDead = 0; // number of dead in one round
     int numberOfEatenPlants = 0;
-    string world[20][20];
+    string **world = new string *[width];
 
 public:
     // sorts organisms by they initiative and age
@@ -41,9 +43,9 @@ public:
     // draws every organism on their position
     void drawWorld()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < width; i++)
         {
-            for (int j = 0; j < 20; j++)
+            for (int j = 0; j < height; j++)
             {
                 world[i][j] = "_"; // dirt
             }
@@ -52,9 +54,9 @@ public:
         {
             world[organisms[i]->getX()][organisms[i]->getY()] = organisms[i]->draw();
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < width; i++)
         {
-            for (int j = 0; j < 20; j++)
+            for (int j = 0; j < height; j++)
             {
                 cout << world[i][j];
             }
@@ -102,12 +104,17 @@ public:
     }
 
     // Constructor
-    World(int capacity) : capacity(capacity), numberOfOrganisms(0)
+    World(int x, int y) : width(x), height(y), capacity(x * y), numberOfOrganisms(0)
     {
         organisms = new Organism *[capacity];
-        for (int i = 0; i < 20; i++)
+        world = new string *[width];
+        for (int i = 0; i < width; i++)
         {
-            for (int j = 0; j < 20; j++)
+            world[i] = new string[height];
+        }
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
             {
                 organisms[i] = nullptr;
             }
