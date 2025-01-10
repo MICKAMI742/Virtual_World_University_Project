@@ -18,8 +18,8 @@ World createRandomMap(int x, int y)
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis(0, 8);      // number of specified organism
-    uniform_int_distribution<> dis2(0, 99);    // x
-    uniform_int_distribution<> dis3(0, 99);    // y
+    uniform_int_distribution<> dis2(0, x - 1); // x
+    uniform_int_distribution<> dis3(0, y - 1); // y
     uniform_int_distribution<> dis4(0, x * y); // number of organisms on the begining
     World world(x, y);
     for (int i = 0; i < dis4(gen); i++)

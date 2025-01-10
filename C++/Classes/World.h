@@ -16,6 +16,17 @@ private:
     string **world = new string *[width];
 
 public:
+    // returns width of the map
+    int getWidth()
+    {
+        return width;
+    };
+
+    // returns height of the map
+    int getHeight()
+    {
+        return height;
+    };
     // sorts organisms by they initiative and age
     void sortOrganismsByInitiative()
     {
@@ -126,14 +137,15 @@ public:
     {
         for (int i = 0; i < numberOfOrganisms; i++)
         {
-            if (organisms[i]->getGenre() == "Berry" || organisms[i]->getGenre() == "Guarana")
-            {
-                numberOfEatenPlants++;
-            }
             if (organisms[i] == organism)
             {
                 int x = organisms[i]->getX();
                 int y = organisms[i]->getY();
+                string genre = organisms[i]->getGenre();
+                if (genre == "Berry" || genre == "Guarana")
+                {
+                    numberOfEatenPlants++;
+                }
                 delete organisms[i];
                 numberOfOrganisms--;
                 numberOfDead++;

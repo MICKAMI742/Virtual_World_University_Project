@@ -40,7 +40,7 @@ public:
             }
             break;
         case 1:
-            if (x + 1 < 20)
+            if (x + 1 < world.getWidth())
             {
                 if (world.checkCollision(x + 1, y) != nullptr)
                 {
@@ -53,7 +53,7 @@ public:
             }
             break;
         case 2:
-            if (y + 1 < 20)
+            if (y + 1 < world.getHeight())
             {
                 if (world.checkCollision(x, y + 1) != nullptr)
                 {

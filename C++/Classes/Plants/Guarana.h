@@ -19,8 +19,8 @@ public:
         {
             std::random_device rd;
             std::mt19937 gen(rd());
-            std::uniform_int_distribution<> dis(0, 19);
-            std::uniform_int_distribution<> dis2(0, 19);
+            std::uniform_int_distribution<> dis(0, world.getWidth() - 1);
+            std::uniform_int_distribution<> dis2(0, world.getHeight() - 1);
             int x = dis(gen);
             int y = dis2(gen);
             if (world.checkCollision(x, y) == nullptr)
