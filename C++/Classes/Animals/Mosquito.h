@@ -1,4 +1,5 @@
 #include "../Animal.h"
+#include "../Organism.h"
 #include <iostream>
 #include <random>
 using namespace std;
@@ -29,8 +30,27 @@ public:
         }
         else
         {
-            Animal::collision(world, otherOrganism);
+            if (willBeBeaten(otherOrganism) == false)
+            {
+                this->setPosition(this->getX(), this->getY());
+            }
+            else
+            {
+                Animal::collision(world, otherOrganism);
+            }
         }
+    }
+
+    bool willBeBeaten(Organism *otherOrganism) // check if organism will be beaten
+    {
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<> dis(0, 1);
+        if (otherOrganism->getPower() > this->getPower())
+        {
+            return dis(gen) == 1;
+        }
+        return false;
     }
 
     int numberOfNearbyMosquitos(World &world) // count mosquitos in group
