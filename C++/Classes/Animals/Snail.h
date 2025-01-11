@@ -35,7 +35,45 @@ public:
         }
         else
         {
-            Animal::collision(world, otherOrganism);
+            if (otherOrganism->getPower() < 2)
+            {
+                for (int i = -1; i < 2; i++)
+                {
+                    for (int j = -1; j < 2; j++)
+                    {
+                        if (!world.isOrganismThere(this->getX() + i, this->getY() + j) && this->checkIfFitsInMap(this->getX() + i, this->getY() + j))
+                        {
+                            otherOrganism->setPosition(otherOrganism->getX() + i, otherOrganism->getY() + j);
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (otherOrganism->getPower() > 4)
+            {
+                random_device rd;
+                mt19937 gen(rd());
+                uniform_int_distribution<> dis(0, 100);
+                int chance = dis(gen);
+                if (chance <= 60)
+                {
+                    for (int i = -1; i < 2; i++)
+                    {
+                        for (int j = -1; j < 2; j++)
+                        {
+                            if (!world.isOrganismThere(this->getX() + i, this->getY() + j) && this->checkIfFitsInMap(this->getX() + i, this->getY() + j))
+                            {
+                                otherOrganism->setPosition(otherOrganism->getX() + i, otherOrganism->getY() + j);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Animal::collision(world, otherOrganism);
+            }
         }
     }
 };
