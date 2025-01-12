@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <fstream>
 #include "Organism.h"
 using namespace std;
 
@@ -17,13 +19,13 @@ private:
 
 public:
     // returns width of the map
-    int getWidth()
+    const int getWidth()
     {
         return width;
     };
 
     // returns height of the map
-    int getHeight()
+    const int getHeight()
     {
         return height;
     };
@@ -86,7 +88,7 @@ public:
     };
 
     // returns number of organisms
-    int getNumberOfOrganisms()
+    const int getNumberOfOrganisms()
     {
         return numberOfOrganisms;
     };
@@ -171,13 +173,26 @@ public:
         numberOfEatenPlants = 0;
     }
 
+    void saveWorldToFile(ofstream &file)
+    {
+        file << width << " " << height << " " << numberOfOrganisms << endl;
+        for (int i = 0; i < numberOfOrganisms; i++)
+        {
+            organisms[i]->saveToFile(file);
+        }
+    }
+
     // Destructor
     ~World()
     {
+        ofstream file;
+        file.open("save.txt", std::ios_base::trunc);
+        saveWorldToFile(file);
         for (int i = 0; i < numberOfOrganisms; i++)
         {
             delete organisms[i];
         }
+        file.close();
         delete[] organisms;
     };
 };

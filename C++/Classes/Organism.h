@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 // forward declaration
@@ -20,11 +21,11 @@ public:
     virtual string draw() = 0;
     Organism(string genre, int power, int initiative, int x, int y) : genre(genre), power(power), initiative(initiative), x(x), y(y) {};
 
-    int getPower() { return power; };
-    int getInitiative() { return initiative; };
-    int getX() { return x; };
-    int getY() { return y; };
-    string getGenre() { return genre; };
+    const int getPower() { return power; };
+    const int getInitiative() { return initiative; };
+    const int getX() { return x; };
+    const int getY() { return y; };
+    const string getGenre() { return genre; };
 
     void setPosition(int x, int y)
     {
@@ -43,4 +44,9 @@ public:
     }
 
     virtual ~Organism() {};
+
+    void saveToFile(ofstream &file)
+    {
+        file << genre << " " << power << " " << initiative << " " << x << " " << y << endl;
+    }
 };

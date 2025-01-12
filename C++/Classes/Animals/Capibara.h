@@ -6,7 +6,11 @@ using namespace std;
 class Capibara : public Animal
 {
 public:
+    // default constructor
     Capibara(int x, int y) : Animal("Capibara", 9, 9, x, y) {};
+
+    // read file constructor
+    Capibara(int power, int initiative, int x, int y) : Animal("Capibara", power, initiative, x, y) {};
 
     string draw() override
     {

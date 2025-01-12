@@ -62,28 +62,118 @@ int main()
 {
     int width;
     int height;
-    cout << "Enter width of the map: " << endl;
-    cin >> width;
-    cout << "Enter height of the map: " << endl;
-    cin >> height;
-    system("cls");
-    World world = createRandomMap(width, height);
-    bool simulationState = true;
-    while (simulationState)
+    int mode;
+    cout << "Press 1 to create random map or 2 to load map from file: ";
+    cin >> mode;
+    switch (mode)
     {
+    case 1:
+    {
+        cout << "Enter width of the map: " << endl;
+        cin >> width;
+        cout << "Enter height of the map: " << endl;
+        cin >> height;
         system("cls");
-        world.sortOrganismsByInitiative();
-        cout << "Michal Kaminski 200788" << endl;
-        world.drawWorld();
-        world.statsAfterRound();
-        cout << "Press any key to continue or 'q' to quit: " << endl;
-        char key = _getch();
-        if (key == 'q')
+        World world = createRandomMap(width, height);
+        bool simulationState = true;
+        while (simulationState)
         {
-            simulationState = false;
-            break;
+            system("cls");
+            world.sortOrganismsByInitiative();
+            cout << "Michal Kaminski 200788" << endl;
+            world.drawWorld();
+            world.statsAfterRound();
+            cout << "Press any key to continue or 'q' to quit: " << endl;
+            char key = _getch();
+            if (key == 'q')
+            {
+                simulationState = false;
+                break;
+            }
+            world.makeTurn();
         }
-        world.makeTurn();
+    }
+    break;
+    case 2:
+    {
+        const string filename = "save.txt";
+        ifstream file;
+        file.open(filename);
+        if (file.is_open())
+        {
+            int width;
+            int height;
+            int numberOfOrganisms;
+            file >> width >> height >> numberOfOrganisms;
+            World world(width, height);
+            for (int i = 0; i < numberOfOrganisms; i++)
+            {
+                string genre;
+                int power;
+                int initiative;
+                int x;
+                int y;
+                file >> genre >> power >> initiative >> x >> y;
+                if (genre == "Wolf")
+                {
+                    world.addOrganism(new Wolf(x, y));
+                }
+                else if (genre == "Sheep")
+                {
+                    world.addOrganism(new Sheep(x, y));
+                }
+                else if (genre == "Snail")
+                {
+                    world.addOrganism(new Snail(x, y));
+                }
+                else if (genre == "Capibara")
+                {
+                    world.addOrganism(new Capibara(x, y));
+                }
+                else if (genre == "Mosquito")
+                {
+                    world.addOrganism(new Mosquito(x, y));
+                }
+                else if (genre == "Berry")
+                {
+                    world.addOrganism(new Berry(x, y));
+                }
+                else if (genre == "Grass")
+                {
+                    world.addOrganism(new Grass(x, y));
+                }
+                else if (genre == "Guarana")
+                {
+                    world.addOrganism(new Guarana(x, y));
+                }
+            }
+            bool simulationState = true;
+            while (simulationState)
+            {
+                system("cls");
+                world.sortOrganismsByInitiative();
+                cout << "Michal Kaminski 200788" << endl;
+                world.drawWorld();
+                world.statsAfterRound();
+                cout << "Press any key to continue or 'q' to quit: " << endl;
+                char key = _getch();
+                if (key == 'q')
+                {
+                    simulationState = false;
+                    break;
+                }
+                world.makeTurn();
+            }
+        }
+        else
+        {
+            cout << "File not found!" << endl;
+        }
+    }
+    break;
+
+    default:
+        break;
     }
     return 0;
 }

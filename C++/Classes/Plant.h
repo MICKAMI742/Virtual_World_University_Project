@@ -20,7 +20,7 @@ public:
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_int_distribution<> dis(0, 100);
-        if (dis(gen) < 5)
+        if (dis(gen) <= 1)
         {
             return true;
         }

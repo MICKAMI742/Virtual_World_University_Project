@@ -3,7 +3,11 @@ using namespace std;
 class Wolf : public Animal
 {
 public:
+    // default constructor
     Wolf(int x, int y) : Animal("Wolf", 9, 5, x, y) {};
+
+    // read file constructor
+    Wolf(int power, int initiative, int x, int y) : Animal("Wolf", power, initiative, x, y) {};
 
     string draw() override
     {

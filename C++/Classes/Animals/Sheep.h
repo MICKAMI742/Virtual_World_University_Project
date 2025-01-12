@@ -5,7 +5,11 @@ using namespace std;
 class Sheep : public Animal
 {
 public:
+    // default constructor
     Sheep(int x, int y) : Animal("Sheep", 4, 4, x, y) {};
+
+    // read file constructor
+    Sheep(int power, int initiative, int x, int y) : Animal("Sheep", power, initiative, x, y) {};
 
     string draw() override
     {

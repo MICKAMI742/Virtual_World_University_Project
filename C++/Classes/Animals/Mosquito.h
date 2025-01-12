@@ -7,7 +7,11 @@ using namespace std;
 class Mosquito : public Animal
 {
 public:
+    // default constructor
     Mosquito(int x, int y) : Animal("Mosquito", 1, 1, x, y) {};
+
+    // read file constructor
+    Mosquito(int power, int initiative, int x, int y) : Animal("Mosquito", power, initiative, x, y) {};
 
     string draw() override
     {
