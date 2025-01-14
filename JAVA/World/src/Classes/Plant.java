@@ -1,6 +1,6 @@
 package Classes;
 
-public class Plant extends Organism{
+public abstract class Plant extends Organism{
 
     @Override
     public void action(World w){

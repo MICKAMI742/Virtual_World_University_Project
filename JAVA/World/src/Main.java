@@ -1,10 +1,8 @@
-import UI.Window;
-
-import javax.swing.*;
+import UI.StartWindow;
 
 
 public class Main {
     public static void main(String[] args) {
-        Window.startWindow();
+        StartWindow window = new StartWindow();
     }
 }
