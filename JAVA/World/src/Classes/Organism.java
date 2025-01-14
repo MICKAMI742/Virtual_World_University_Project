@@ -1,5 +1,8 @@
 package Classes;
 
+import java.awt.*;
+import java.util.Random;
+
 abstract public class Organism {
     private int power;
     private int initiative;
@@ -7,6 +10,7 @@ abstract public class Organism {
     private int age;
     private String genre;
     private World world; // world reference
+    final private Color color;
 
     public abstract void action(World w);
     public abstract void collision(World w, Organism o);
@@ -49,5 +53,18 @@ abstract public class Organism {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Organism(int initiative, int power, String genre, Color color) {
+        this.initiative = initiative;
+        this.power = power;
+        this.genre = genre;
+        this.color = color;
+        age = 0;
+
+    }
+
+    public Color getColor() {
+        return color;
     }
 }

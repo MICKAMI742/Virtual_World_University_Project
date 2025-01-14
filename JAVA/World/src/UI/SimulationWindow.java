@@ -1,4 +1,6 @@
 package UI;
+import Classes.World;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,6 +15,9 @@ public class SimulationWindow
     public SimulationWindow(int width, int height){
         JFrame frame = new JFrame("Okno symulacji");
 
+        // World initialization
+        World world = new World(width, height);
+
         // Sets frame size and sets position in the middle of the screen
         frame.setSize(screenSize);
         frame.setLocationRelativeTo(null);
@@ -23,13 +28,7 @@ public class SimulationWindow
         JPanel gridPanel = new JPanel(new GridLayout(height, width, 10, 10));
 
         // Create buttons in a grid
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                JButton button = new JButton();
-                button.setPreferredSize(buttonSize);
-                gridPanel.add(button);
-            }
-        }
+        world.drawWorld(gridPanel);
 
         // Add the grid panel to the center
         frame.add(gridPanel, BorderLayout.CENTER);
@@ -50,7 +49,8 @@ public class SimulationWindow
         sidePanel.add(stat1);
         sidePanel.add(stat2);
 
-//        sidePanel.add(Box.createRigidArea(new Dimension(0, 20))); // Spacer
+        // Implements line of free space
+        sidePanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Add components for legend
         JLabel legendLabel = new JLabel("Legenda:");
@@ -70,7 +70,8 @@ public class SimulationWindow
         simulateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                world.makeTurn();
+                world.repaintWorld(gridPanel);
             }
         });
 
