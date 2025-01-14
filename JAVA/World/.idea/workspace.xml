@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18ee1979-2c04-4d2d-a721-6de720f16edf" name="Changes" comment="Added layout service and basic animals and plants classes implementation">
+    <list default="true" id="18ee1979-2c04-4d2d-a721-6de720f16edf" name="Changes" comment="Implemented classes constructors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Capibara.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Capibara.java" afterDir="false" />
@@ -112,7 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1736785578215</updated>
       <workItem from="1736785579457" duration="5648000" />
-      <workItem from="1736873656262" duration="11809000" />
+      <workItem from="1736873656262" duration="12350000" />
     </task>
     <task id="LOCAL-00001" summary="Window definition in Java project">
       <option name="closed" value="true" />
@@ -138,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736881130643</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implemented classes constructors">
+      <option name="closed" value="true" />
+      <created>1736888175701</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1736888175701</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +156,7 @@
     <MESSAGE value="Window definition in Java project" />
     <MESSAGE value="First implementations of classes World, Plant, Organism, Animal" />
     <MESSAGE value="Added layout service and basic animals and plants classes implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added layout service and basic animals and plants classes implementation" />
+    <MESSAGE value="Implemented classes constructors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented classes constructors" />
   </component>
 </project>
