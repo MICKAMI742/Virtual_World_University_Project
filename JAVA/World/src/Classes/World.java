@@ -9,6 +9,7 @@ public class World {
     private int width, height;
     private int numOrganisms = 0;
     private int capacity;
+    final private JButton[][] buttons;
 
 
     public void makeTurn(){
@@ -22,17 +23,21 @@ public class World {
         for(int i = 0; i < width; i++){
             for(int j = 0; j < height; j++){
                 JButton button = new JButton();
+                buttons[i][j] = button;
                 panel.add(button);
             }
+        }
+        for(Organism organism : organisms){
+            buttons[organism.getX()][organism.getY()].setBackground(organism.getColor());
         }
     }
 
     public void repaintWorld(JPanel panel){
-        for(int i = 0; i < width; i++){
-            for(int j = 0; j < height; j++){
-                panel.repaint();
-            }
+        for(Organism organism : organisms){
+                JButton button = buttons[organism.getX()][organism.getY()];
+                button.setBackground(organism.getColor());
         }
+        panel.repaint();
     }
 
     public World(int x, int y){
@@ -49,9 +54,14 @@ public class World {
                     "Błąd",
                     JOptionPane.ERROR_MESSAGE);
         }
+        buttons = new JButton[width][height];
     }
 
-    public void addOrganism(){
+    public void addOrganism(Organism o){
+        this.organisms.add(o);
+    }
+
+    public void addOrganismByChoice(){
         JFrame frame = new JFrame("Wybierz zwierze ktore chcesz dodac");
         JPanel panel = new JPanel();
         frame.add(panel);

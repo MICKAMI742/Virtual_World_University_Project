@@ -1,10 +1,16 @@
 package UI;
+import Classes.Animals.*;
+import Classes.Plants.Berry;
+import Classes.Plants.Grass;
+import Classes.Plants.Guarana;
 import Classes.World;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
+import java.util.random.*;
 
 public class SimulationWindow
 {
@@ -16,7 +22,8 @@ public class SimulationWindow
         JFrame frame = new JFrame("Okno symulacji");
 
         // World initialization
-        World world = new World(width, height);
+        World world = createRandomWorld(width, height);
+
 
         // Sets frame size and sets position in the middle of the screen
         frame.setSize(screenSize);
@@ -92,5 +99,42 @@ public class SimulationWindow
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+    private World createRandomWorld(int width, int height){
+        World world = new World(width, height);
+        int numOfRandomOrganisms = new Random().nextInt(width * height) - 1;
+        for (int i = 0; i < numOfRandomOrganisms; i++) {
+            int randomOrganism = new Random().nextInt(8);
+            int x = new Random().nextInt(width);
+            int y = new Random().nextInt(height);
+            switch (randomOrganism){
+                case 0:
+                    world.addOrganism(new Capibara(x,y));
+                    break;
+                case 1:
+                    world.addOrganism(new Wolf(x,y));
+                    break;
+                case 2:
+                    world.addOrganism(new Mosquito(x,y));
+                    break;
+                case 3:
+                    world.addOrganism(new Sheep(x,y));
+                    break;
+                case 4:
+                    world.addOrganism(new Snail(x,y));
+                    break;
+                case 5:
+                    world.addOrganism(new Berry(x,y));
+                    break;
+                case 6:
+                    world.addOrganism(new Grass(x,y));
+                    break;
+                case 7:
+                    world.addOrganism(new Guarana(x,y));
+                    break;
+            }
+        }
+        return world;
     }
 }
