@@ -1,5 +1,6 @@
 package UI;
 import Classes.Animals.*;
+import Classes.Organism;
 import Classes.Plants.Berry;
 import Classes.Plants.Grass;
 import Classes.Plants.Guarana;
@@ -74,12 +75,9 @@ public class SimulationWindow
         sidePanel.add(simulateButton);
 
         // It will call action for every organism
-        simulateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                world.makeTurn();
-                world.repaintWorld(gridPanel);
-            }
+        simulateButton.addActionListener(e -> {
+            world.makeTurn();
+            world.repaintWorld(gridPanel);
         });
 
         JButton saveButton = new JButton("Zapisz świat");
@@ -103,7 +101,7 @@ public class SimulationWindow
 
     private World createRandomWorld(int width, int height){
         World world = new World(width, height);
-        int numOfRandomOrganisms = new Random().nextInt(width * height) - 1;
+        int numOfRandomOrganisms = new Random().nextInt(width * 2);
         for (int i = 0; i < numOfRandomOrganisms; i++) {
             int randomOrganism = new Random().nextInt(8);
             int x = new Random().nextInt(width);

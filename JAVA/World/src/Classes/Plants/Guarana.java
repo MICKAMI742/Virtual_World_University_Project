@@ -7,7 +7,7 @@ import java.awt.*;
 public class Guarana extends Plant {
 
     public Guarana(int x, int y) {
-        super(0,0,"Guarana", Color.black);
+        super(0,0,"Guarana", new Color(220,20,60));
         this.setX(x);
         this.setY(y);
         this.setAge(0);

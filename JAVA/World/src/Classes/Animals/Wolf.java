@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Wolf extends Animal {
     public Wolf(int x, int y) {
-        super(4,9, "Wolf", new Color(5, 255, 255));
+        super(4,9, "Wolf", new Color(105,105,105));
         this.setX(x);
         this.setY(y);
         this.setAge(0);
