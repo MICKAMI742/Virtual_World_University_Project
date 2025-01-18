@@ -1,6 +1,8 @@
 package Classes;
 
 import java.awt.*;
+import java.io.Serializable;
+import java.util.Objects;
 import java.util.Random;
 
 abstract public class Organism {
@@ -66,5 +68,29 @@ abstract public class Organism {
 
     public Color getColor() {
         return color;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    // helps generate unique hashset to my legend
+    // of organisms
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Organism organism = (Organism) o;
+        return Objects.equals(genre, organism.genre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(genre);
+    }
+
+    @Override
+    public String toString() {
+        return this.genre + " " + this.initiative +" "+ this.power + " " + this.x + " " + this.y + " " + this.age + "\n";
     }
 }

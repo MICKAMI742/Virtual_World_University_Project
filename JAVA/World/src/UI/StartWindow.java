@@ -1,9 +1,18 @@
 package UI;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
+import java.util.Objects;
+
+import Classes.*;
+import Classes.Animals.*;
+import Classes.Plants.Berry;
+import Classes.Plants.Grass;
+import Classes.Plants.Guarana;
 
 public class StartWindow {
 
@@ -86,9 +95,11 @@ public class StartWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
-                int result = fileChooser.showOpenDialog(frame);
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    JOptionPane.showMessageDialog(frame, "Wybrano plik: " + fileChooser.getSelectedFile().getAbsolutePath());
+                int returnVal = fileChooser.showOpenDialog(frame);
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    File file = fileChooser.getSelectedFile();
+                    SimulationWindow simulationWindow = new SimulationWindow(Objects.requireNonNull(readOrganismsFromFile(file)).getWidth(),
+                            Objects.requireNonNull(readOrganismsFromFile(file)).getHeight());
                 }
             }
         });
@@ -100,5 +111,67 @@ public class StartWindow {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Shows window
         frame.setVisible(true);
+    }
+
+    private static World readOrganismsFromFile(File file){
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String line;
+            World world = null;
+
+            if((line = reader.readLine()) != null){
+                String[] tokens = line.split(" ");
+                world = new World(Integer.parseInt(tokens[0]),
+                        Integer.parseInt(tokens[1]));
+            }
+
+            String genre = "";
+            int initiative = 0;
+            int power = 0;
+            int x = 0;
+            int y = 0;
+            int age = 0;
+
+
+            while((line = reader.readLine()) != null){
+                String[] data = line.split(" ");
+                if(data.length == 6){
+                    genre = data[0];
+                    initiative = Integer.parseInt(data[1]);
+                    power = Integer.parseInt(data[2]);
+                    x = Integer.parseInt(data[3]);
+                    y = Integer.parseInt(data[4]);
+                    age = Integer.parseInt(data[5]);
+                }
+
+                if(world != null){
+                    switch(genre){
+                        case "Mosquito":
+                            world.addOrganism(new Mosquito(initiative,power,x,y,age));
+                        case "Wolf":
+                            world.addOrganism(new Wolf(initiative,power,x,y,age));
+                        case "Sheep":
+                            world.addOrganism(new Sheep(initiative,power,x,y,age));
+                        case "Capibara":
+                            world.addOrganism(new Capibara(initiative,power,x,y,age));
+                        case "Snail":
+                            world.addOrganism(new Snail(initiative,power,x,y,age));
+                        case "Berry":
+                            world.addOrganism(new Berry(initiative,power,x,y,age));
+                        case "Grass":
+                            world.addOrganism(new Grass(initiative,power,x,y,age));
+                        case "Guarana":
+                            world.addOrganism(new Guarana(initiative,power,x,y,age));
+                    }
+                }
+            }
+
+            reader.close();
+            return world;
+        } catch (Exception e)
+        {
+
+        }
+        return null;
     }
 }

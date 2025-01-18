@@ -1,6 +1,12 @@
 package Classes;
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -14,6 +20,18 @@ public class World {
     private int capacity;
     final private JButton[][] buttons;
 
+
+    public void firstTurn(){
+        if(!toRemove.isEmpty()){
+            organisms.removeAll(toRemove);
+            toRemove.clear();
+        }
+
+        if(!toAdd.isEmpty()){
+            organisms.addAll(toAdd);
+            toAdd.clear();
+        }
+    }
 
     public void makeTurn(){
         for (Organism organism : organisms) {
@@ -108,5 +126,32 @@ public class World {
             }
         }
         return null;
+    }
+
+    public List<Organism> getOrganism(){
+        if(!organisms.isEmpty()){
+            return organisms;
+        }
+        return null;
+    }
+
+    public JButton[][] getButtons(){
+        return buttons;
+    }
+
+    public void saveWorldToFile() {
+        LocalDateTime date = LocalDateTime.now();
+        String fileName = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(new Date()) + ".txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            writer.write(width + " " + height + "\n");
+
+            for (Organism o : organisms) {
+                writer.write(o.toString());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -4,15 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18ee1979-2c04-4d2d-a721-6de720f16edf" name="Changes" comment="Implemented classes constructors">
+    <list default="true" id="18ee1979-2c04-4d2d-a721-6de720f16edf" name="Changes" comment="Implemented organisms collisions and multiplication">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../C++/save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/save.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Capibara.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Capibara.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Mosquito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Mosquito.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Sheep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Sheep.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Snail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Snail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Wolf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Organism.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Plants/Berry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Plants/Berry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Plants/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Plants/Grass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Plants/Guarana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Plants/Guarana.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/World.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/SimulationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/SimulationWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/StartWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/StartWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,23 +61,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\micha\Desktop\Politechnika\Studia_II_Rok\I_semestr\programowanie_obiektowe\LAB_OTWARTY\JAVA\World\src" />
@@ -92,8 +102,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
       </set>
     </attachedChunks>
   </component>
@@ -107,7 +117,10 @@
       <updated>1736785578215</updated>
       <workItem from="1736785579457" duration="5648000" />
       <workItem from="1736873656262" duration="12549000" />
-      <workItem from="1736967602904" duration="6247000" />
+      <workItem from="1736967602904" duration="6754000" />
+      <workItem from="1737049494045" duration="10381000" />
+      <workItem from="1737195776827" duration="1112000" />
+      <workItem from="1737196974787" duration="12758000" />
     </task>
     <task id="LOCAL-00001" summary="Window definition in Java project">
       <option name="closed" value="true" />
@@ -149,7 +162,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736888372396</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implemented random map generator and showing my organisms on the map function">
+      <option name="closed" value="true" />
+      <created>1736974959065</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1736974959065</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Implemented organisms collisions and multiplication">
+      <option name="closed" value="true" />
+      <created>1737060285225</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1737060285225</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +189,24 @@
     <MESSAGE value="First implementations of classes World, Plant, Organism, Animal" />
     <MESSAGE value="Added layout service and basic animals and plants classes implementation" />
     <MESSAGE value="Implemented classes constructors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented classes constructors" />
+    <MESSAGE value="Implemented random map generator and showing my organisms on the map function" />
+    <MESSAGE value="Implemented organisms collisions and multiplication" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented organisms collisions and multiplication" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/UI/StartWindow.java</url>
+          <line>143</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/UI/StartWindow.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

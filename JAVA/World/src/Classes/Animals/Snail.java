@@ -11,4 +11,11 @@ public class Snail extends Animal {
         this.setY(y);
         this.setAge(0);
     }
+
+    public Snail(int initiative, int power, int x, int y, int age) {
+        super(initiative, power, "Snail", new Color(210,180,140));
+        this.setX(x);
+        this.setY(y);
+        this.setAge(age);
+    }
 }

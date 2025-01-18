@@ -10,7 +10,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
+import java.io.FileInputStream;
+import java.util.*;
+import java.util.List;
 import java.util.random.*;
 
 public class SimulationWindow
@@ -19,11 +21,13 @@ public class SimulationWindow
     final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     final Dimension buttonSize = new Dimension(20, 20);
 
+    // creates random world
     public SimulationWindow(int width, int height){
         JFrame frame = new JFrame("Okno symulacji");
 
         // World initialization
         World world = createRandomWorld(width, height);
+        world.firstTurn(); // pushing organisms from temp lists
 
 
         // Sets frame size and sets position in the middle of the screen
@@ -64,11 +68,7 @@ public class SimulationWindow
         JLabel legendLabel = new JLabel("Legenda:");
         legendLabel.setFont(new Font("Arial", Font.BOLD, 16));
         sidePanel.add(legendLabel);
-
-        JLabel legend1 = new JLabel("A - Organizm typu A");
-        JLabel legend2 = new JLabel("B - Organizm typu B");
-        sidePanel.add(legend1);
-        sidePanel.add(legend2);
+        showLegend(sidePanel, world.getOrganism());
 
         JButton simulateButton = new JButton("Następna tura");
         simulateButton.setPreferredSize(buttonSize);
@@ -88,7 +88,7 @@ public class SimulationWindow
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                world.saveWorldToFile();
             }
         });
 
@@ -97,6 +97,11 @@ public class SimulationWindow
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+    // reads world from file
+    public SimulationWindow(World world){
+
     }
 
     private World createRandomWorld(int width, int height){
@@ -134,5 +139,20 @@ public class SimulationWindow
             }
         }
         return world;
+    }
+
+    private void showLegend(JPanel panel, List<Organism> o){
+        Set<Organism> unique = new HashSet<>(o);
+
+        for(Organism oi : unique){
+            JLabel label = new JLabel(oi.getGenre());
+            label.setFont(new Font("Arial", Font.BOLD, 16));
+            label.setHorizontalAlignment(JLabel.CENTER);
+            label.setForeground(oi.getColor());
+            panel.add(label);
+        }
+
+        panel.revalidate();
+        panel.repaint();
     }
 }

@@ -11,4 +11,11 @@ public class Mosquito extends Animal {
         this.setY(y);
         this.setAge(0);
     }
+
+    public Mosquito(int initiative, int power, int x, int y, int age) {
+        super(initiative, power, "Mosquito", new Color(47,79,79));
+        this.setX(x);
+        this.setY(y);
+        this.setAge(age);
+    }
 }

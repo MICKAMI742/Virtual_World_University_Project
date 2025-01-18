@@ -4,8 +4,6 @@ import Classes.Animals.*;
 
 import java.awt.*;
 import java.util.Random;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Animal extends Organism {
 
