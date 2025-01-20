@@ -101,7 +101,79 @@ public class SimulationWindow
 
     // reads world from file
     public SimulationWindow(World world){
+        JFrame frame = new JFrame("Okno symulacji");
 
+        // World initialization
+        world.firstTurn(); // pushing organisms from temp lists
+
+
+        // Sets frame size and sets position in the middle of the screen
+        frame.setSize(screenSize);
+        frame.setLocationRelativeTo(null);
+
+        frame.setLayout(new BorderLayout()); // Use BorderLayout to separate grid and side panel
+
+        // Panel for the grid of buttons
+        JPanel gridPanel = new JPanel(new GridLayout(world.getHeight(), world.getWidth(), 10, 10));
+
+        // Create buttons in a grid
+        world.drawWorld(gridPanel);
+
+        // Add the grid panel to the center
+        frame.add(gridPanel, BorderLayout.CENTER);
+
+        // Panel for statistics and legend
+        JPanel sidePanel = new JPanel();
+        sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
+        sidePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Add components for statistics
+        JLabel statsLabel = new JLabel("Statystyki:");
+        statsLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        sidePanel.add(statsLabel);
+
+        // Displaying stats
+        JLabel stat1 = new JLabel("Urodzenia: ");
+        JLabel stat2 = new JLabel("Śmierci: ");
+        sidePanel.add(stat1);
+        sidePanel.add(stat2);
+
+        // Implements line of free space
+        sidePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+
+        // Add components for legend
+        JLabel legendLabel = new JLabel("Legenda:");
+        legendLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        sidePanel.add(legendLabel);
+        showLegend(sidePanel, world.getOrganism());
+
+        JButton simulateButton = new JButton("Następna tura");
+        simulateButton.setPreferredSize(buttonSize);
+        sidePanel.add(simulateButton);
+
+        // It will call action for every organism
+        simulateButton.addActionListener(e -> {
+            world.makeTurn();
+            world.repaintWorld(gridPanel);
+        });
+
+        JButton saveButton = new JButton("Zapisz świat");
+        saveButton.setPreferredSize(buttonSize);
+        sidePanel.add(saveButton);
+
+        // It will save world to file
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                world.saveWorldToFile();
+            }
+        });
+
+        // Add the side panel to the right
+        frame.add(sidePanel, BorderLayout.EAST);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 
     private World createRandomWorld(int width, int height){

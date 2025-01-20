@@ -98,8 +98,7 @@ public class StartWindow {
                 int returnVal = fileChooser.showOpenDialog(frame);
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
                     File file = fileChooser.getSelectedFile();
-                    SimulationWindow simulationWindow = new SimulationWindow(Objects.requireNonNull(readOrganismsFromFile(file)).getWidth(),
-                            Objects.requireNonNull(readOrganismsFromFile(file)).getHeight());
+                    SimulationWindow simulationWindow = new SimulationWindow(Objects.requireNonNull(readOrganismsFromFile(file)));
                 }
             }
         });
@@ -120,7 +119,7 @@ public class StartWindow {
             World world = null;
 
             if((line = reader.readLine()) != null){
-                String[] tokens = line.split(" ");
+                String[] tokens = line.split(",");
                 world = new World(Integer.parseInt(tokens[0]),
                         Integer.parseInt(tokens[1]));
             }
@@ -134,7 +133,7 @@ public class StartWindow {
 
 
             while((line = reader.readLine()) != null){
-                String[] data = line.split(" ");
+                String[] data = line.split(",");
                 if(data.length == 6){
                     genre = data[0];
                     initiative = Integer.parseInt(data[1]);
@@ -148,20 +147,28 @@ public class StartWindow {
                     switch(genre){
                         case "Mosquito":
                             world.addOrganism(new Mosquito(initiative,power,x,y,age));
+                            break;
                         case "Wolf":
                             world.addOrganism(new Wolf(initiative,power,x,y,age));
+                            break;
                         case "Sheep":
                             world.addOrganism(new Sheep(initiative,power,x,y,age));
+                            break;
                         case "Capibara":
                             world.addOrganism(new Capibara(initiative,power,x,y,age));
+                            break;
                         case "Snail":
                             world.addOrganism(new Snail(initiative,power,x,y,age));
+                            break;
                         case "Berry":
                             world.addOrganism(new Berry(initiative,power,x,y,age));
+                            break;
                         case "Grass":
                             world.addOrganism(new Grass(initiative,power,x,y,age));
+                            break;
                         case "Guarana":
                             world.addOrganism(new Guarana(initiative,power,x,y,age));
+                            break;
                     }
                 }
             }

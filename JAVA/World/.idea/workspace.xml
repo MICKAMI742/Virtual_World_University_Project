@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18ee1979-2c04-4d2d-a721-6de720f16edf" name="Changes" comment="Implemented organisms collisions and multiplication">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="18ee1979-2c04-4d2d-a721-6de720f16edf" name="Changes" comment="Added file handling methods and legend drawer for specified map">
       <change beforePath="$PROJECT_DIR$/../../C++/save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/save.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Capibara.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Capibara.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Mosquito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Mosquito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Sheep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Sheep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Snail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Snail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Animals/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Animals/Wolf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Organism.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Plants/Berry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Plants/Berry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Plants/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Plants/Grass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Plants/Guarana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Plants/Guarana.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/World.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/SimulationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/SimulationWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/StartWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/StartWindow.java" afterDir="false" />
@@ -120,7 +110,9 @@
       <workItem from="1736967602904" duration="6754000" />
       <workItem from="1737049494045" duration="10381000" />
       <workItem from="1737195776827" duration="1112000" />
-      <workItem from="1737196974787" duration="12758000" />
+      <workItem from="1737196974787" duration="13006000" />
+      <workItem from="1737246916914" duration="2278000" />
+      <workItem from="1737394249279" duration="4646000" />
     </task>
     <task id="LOCAL-00001" summary="Window definition in Java project">
       <option name="closed" value="true" />
@@ -178,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737060285225</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added file handling methods and legend drawer for specified map">
+      <option name="closed" value="true" />
+      <created>1737213352642</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1737213352642</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,22 +191,28 @@
     <MESSAGE value="Implemented classes constructors" />
     <MESSAGE value="Implemented random map generator and showing my organisms on the map function" />
     <MESSAGE value="Implemented organisms collisions and multiplication" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented organisms collisions and multiplication" />
+    <MESSAGE value="Added file handling methods and legend drawer for specified map" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added file handling methods and legend drawer for specified map" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/UI/StartWindow.java</url>
-          <line>143</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/UI/StartWindow.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/UI/SimulationWindow.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Classes.World" memberName="organisms" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/src/UI/SimulationWindow.java" line="156">
+        <watch expression="world" language="JAVA" />
+      </inline-watch>
+    </watches-manager>
   </component>
 </project>

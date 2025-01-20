@@ -9,6 +9,7 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class World {
     private List<Organism> organisms;
@@ -86,6 +87,7 @@ public class World {
             this.organisms = new ArrayList<>();
             this.toRemove = new ArrayList<>();
             this.toAdd = new ArrayList<>();
+            sortByInitiativeAndAge();
         }catch(NumberFormatException e){
             JFrame frame = new JFrame();
             // Obsługa błędu, jeśli dane nie są liczbami
@@ -144,7 +146,7 @@ public class World {
         String fileName = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(new Date()) + ".txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            writer.write(width + " " + height + "\n");
+            writer.write(width + "," + height + "\n");
 
             for (Organism o : organisms) {
                 writer.write(o.toString());
@@ -154,4 +156,9 @@ public class World {
             e.printStackTrace();
         }
     }
+
+    public void sortByInitiativeAndAge() {
+
+    }
+
 }

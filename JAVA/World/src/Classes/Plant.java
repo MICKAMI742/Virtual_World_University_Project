@@ -19,9 +19,20 @@ public abstract class Plant extends Organism{
         int y = rand.nextInt(w.getHeight());
         if(random <= 1){
             switch(this){
-                case Berry berry -> w.addOrganism(new Berry(x,y));
-                case Grass grass -> w.addOrganism(new Grass(x,y));
-                case Guarana guarana -> w.addOrganism(new Guarana(x,y));
+                case Berry berry -> {
+                    if(w.checkCollision(x,y) != null)
+                        w.addOrganism(new Berry(x,y));
+                }
+
+                case Grass grass -> {
+                    if(w.checkCollision(x,y) != null)
+                        w.addOrganism(new Grass(x,y));
+                }
+
+                case Guarana guarana -> {
+                    if(w.checkCollision(x,y) != null)
+                        w.addOrganism(new Guarana(x,y));
+                }
                 default -> {
                 }
             }

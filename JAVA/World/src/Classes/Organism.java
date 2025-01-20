@@ -91,6 +91,7 @@ abstract public class Organism {
 
     @Override
     public String toString() {
-        return this.genre + " " + this.initiative +" "+ this.power + " " + this.x + " " + this.y + " " + this.age + "\n";
+        return this.genre + "," + this.initiative +","+ this.power +
+        "," + this.x + "," + this.y + "," + this.age + "\n";
     }
 }
