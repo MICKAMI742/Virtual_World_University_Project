@@ -77,7 +77,7 @@ public class SimulationWindow
         // It will call action for every organism
         simulateButton.addActionListener(e -> {
             world.makeTurn();
-            world.repaintWorld(gridPanel);
+            world.repaintWorld(gridPanel, stat1, stat2);
         });
 
         JButton saveButton = new JButton("Zapisz świat");
@@ -154,7 +154,7 @@ public class SimulationWindow
         // It will call action for every organism
         simulateButton.addActionListener(e -> {
             world.makeTurn();
-            world.repaintWorld(gridPanel);
+            world.repaintWorld(gridPanel, stat1, stat2);
         });
 
         JButton saveButton = new JButton("Zapisz świat");

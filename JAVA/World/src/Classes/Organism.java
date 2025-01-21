@@ -10,7 +10,7 @@ abstract public class Organism {
     private int initiative;
     private int x, y;
     private int age;
-    private String genre;
+    private final String genre;
     private World world; // world reference
     final private Color color;
 

@@ -1,6 +1,8 @@
 package Classes.Plants;
 
+import Classes.Organism;
 import Classes.Plant;
+import Classes.World;
 
 import java.awt.*;
 
@@ -17,5 +19,9 @@ public class Berry extends Plant {
         this.setX(x);
         this.setY(y);
         this.setAge(age);
+    }
+    @Override
+    public void collision(World w, Organism o){
+        w.removeOrganism(o);
     }
 }

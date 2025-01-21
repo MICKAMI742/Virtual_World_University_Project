@@ -17,8 +17,8 @@ public class World {
     private List<Organism> toAdd;
     private int width, height;
     private int numOrganisms = 0;
-    private int numOfBorn;
-    private int capacity;
+    private int numOfBorn = 0;
+    private int numOfDead = 0;
     final private JButton[][] buttons;
 
 
@@ -30,6 +30,7 @@ public class World {
 
         if(!toAdd.isEmpty()){
             organisms.addAll(toAdd);
+            numOrganisms = organisms.size();
             toAdd.clear();
         }
     }
@@ -41,7 +42,9 @@ public class World {
         }
 
         if(!toRemove.isEmpty()){
-            organisms.removeAll(toRemove);
+            for(Organism organism : toRemove){
+                organisms.remove(organism);
+            }
             toRemove.clear();
         }
 
@@ -56,6 +59,9 @@ public class World {
             for(int j = 0; j < height; j++){
                 JButton button = new JButton();
                 button.setBackground(Color.WHITE);
+                button.addActionListener(e -> {
+                    addOrganismByChoice();
+                });
                 buttons[i][j] = button;
                 panel.add(button);
             }
@@ -65,7 +71,7 @@ public class World {
         }
     }
 
-    public void repaintWorld(JPanel panel){
+    public void repaintWorld(JPanel panel, JLabel stat1, JLabel stat2){
         for(int i = 0; i < width; i++){
             for(int j = 0; j < height; j++){
                 JButton button = buttons[i][j];
@@ -76,6 +82,10 @@ public class World {
                 JButton button = buttons[organism.getX()][organism.getY()];
                 button.setBackground(organism.getColor());
         }
+        stat1.setText("Urodzenia: " + numOfBorn);
+        stat2.setText("Śmierci: " + numOfDead);
+        stat1.repaint();
+        stat2.repaint();
         panel.repaint();
     }
 
@@ -83,7 +93,6 @@ public class World {
         try{
             this.width = x;
             this.height = y;
-            this.capacity = this.width * this.height;
             this.organisms = new ArrayList<>();
             this.toRemove = new ArrayList<>();
             this.toAdd = new ArrayList<>();
@@ -101,12 +110,14 @@ public class World {
 
     public void addOrganism(Organism o){
         toAdd.add(o);
+        numOfBorn++;
     }
 
     public void addOrganismByChoice(){
-        JFrame frame = new JFrame("Wybierz zwierze ktore chcesz dodac");
-        JPanel panel = new JPanel();
-        frame.add(panel);
+//        JFrame frame = new JFrame("Wybierz zwierze ktore chcesz dodac");
+//        JPanel panel = new JPanel();
+//        frame.add(panel);
+        System.out.println("addOrganismByChoice");
     }
 
     public int getWidth(){
@@ -119,6 +130,7 @@ public class World {
 
     public void removeOrganism(Organism o){
         toRemove.add(o);
+        numOfDead++;
     }
 
     Organism checkCollision(int x, int y){
