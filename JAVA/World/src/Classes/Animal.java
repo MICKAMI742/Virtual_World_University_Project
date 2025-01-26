@@ -1,6 +1,7 @@
 package Classes;
 
 import Classes.Animals.*;
+import Classes.Plants.Berry;
 
 import java.awt.*;
 import java.util.Random;
@@ -100,6 +101,8 @@ public abstract class Animal extends Organism {
                         w.removeOrganism(o);
                     } else {
                         w.removeOrganism(this);
+                        if(o instanceof Berry)
+                            w.removeOrganism(o);
                     }
                 }
         }

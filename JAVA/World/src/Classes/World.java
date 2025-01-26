@@ -3,20 +3,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class World {
     private List<Organism> organisms;
     private List<Organism> toRemove;
     private List<Organism> toAdd;
     private int width, height;
-    private int numOrganisms = 0;
     private int numOfBorn = 0;
     private int numOfDead = 0;
     final private JButton[][] buttons;
@@ -30,7 +25,6 @@ public class World {
 
         if(!toAdd.isEmpty()){
             organisms.addAll(toAdd);
-            numOrganisms = organisms.size();
             toAdd.clear();
         }
     }
@@ -52,6 +46,7 @@ public class World {
             organisms.addAll(toAdd);
             toAdd.clear();
         }
+        sortByInitiativeAndAge();
     }
 
     public void drawWorld(JPanel panel){
@@ -82,8 +77,10 @@ public class World {
                 JButton button = buttons[organism.getX()][organism.getY()];
                 button.setBackground(organism.getColor());
         }
-        stat1.setText("Urodzenia: " + numOfBorn);
-        stat2.setText("Śmierci: " + numOfDead);
+        stat1.setText(toAdd.size() + " Born");
+        stat2.setText(toRemove.size() + " Dead");
+        numOfDead = 0;
+        numOfBorn = 0;
         stat1.repaint();
         stat2.repaint();
         panel.repaint();
@@ -110,7 +107,7 @@ public class World {
 
     public void addOrganism(Organism o){
         toAdd.add(o);
-        numOfBorn++;
+        numOfBorn = toAdd.size();
     }
 
     public void addOrganismByChoice(){
@@ -130,10 +127,10 @@ public class World {
 
     public void removeOrganism(Organism o){
         toRemove.add(o);
-        numOfDead++;
+        numOfDead = toRemove.size();
     }
 
-    Organism checkCollision(int x, int y){
+    public Organism checkCollision(int x, int y){
         for(Organism o : organisms){
             if(o.getX() == x && o.getY() == y){
                 return o;
@@ -149,12 +146,7 @@ public class World {
         return null;
     }
 
-    public JButton[][] getButtons(){
-        return buttons;
-    }
-
     public void saveWorldToFile() {
-        LocalDateTime date = LocalDateTime.now();
         String fileName = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(new Date()) + ".txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
@@ -170,7 +162,7 @@ public class World {
     }
 
     public void sortByInitiativeAndAge() {
-
+        organisms.sort((o1, o2) ->
+            o2.getInitiative() == o1.getInitiative() ? o2.getAge() - o1.getAge() : o2.getInitiative() - o1.getInitiative());
     }
-
 }

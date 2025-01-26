@@ -12,7 +12,7 @@ abstract public class Organism {
     private int age;
     private final String genre;
     private World world; // world reference
-    final private Color color;
+    private Color color;
 
     public abstract void action(World w);
     public abstract void collision(World w, Organism o);
@@ -39,6 +39,10 @@ abstract public class Organism {
 
     public void setX(int x) {
         this.x = x;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public int getY() {

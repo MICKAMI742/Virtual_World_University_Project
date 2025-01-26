@@ -1,8 +1,10 @@
 package Classes.Animals;
 
 import Classes.Animal;
+import Classes.World;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Capibara extends Animal {
     // random world creation
@@ -19,5 +21,19 @@ public class Capibara extends Animal {
         this.setX(x);
         this.setY(y);
         this.setAge(age);
+    }
+
+    // hides in the grass
+    @Override
+    public void action(World w){
+        changeColor();
+        super.action(w);
+    }
+
+    private void changeColor(){
+        Random rand = new Random();
+        if(rand.nextBoolean()){
+            this.setColor(new Color(34,139,34));
+        }
     }
 }

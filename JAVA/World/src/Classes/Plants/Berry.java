@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Berry extends Plant {
     public Berry(int x, int y) {
-        super(0,0,"Berry", new Color(75,0,130));
+        super(0,100000,"Berry", new Color(75,0,130));
         this.setX(x);
         this.setY(y);
         this.setAge(0);
@@ -19,9 +19,5 @@ public class Berry extends Plant {
         this.setX(x);
         this.setY(y);
         this.setAge(age);
-    }
-    @Override
-    public void collision(World w, Organism o){
-        w.removeOrganism(o);
     }
 }

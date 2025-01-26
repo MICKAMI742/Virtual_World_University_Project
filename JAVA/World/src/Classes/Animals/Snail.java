@@ -1,8 +1,11 @@
 package Classes.Animals;
 
 import Classes.Animal;
+import Classes.World;
 
 import java.awt.*;
+import java.util.Random;
+
 
 public class Snail extends Animal {
     public Snail(int x, int y) {
@@ -17,5 +20,13 @@ public class Snail extends Animal {
         this.setX(x);
         this.setY(y);
         this.setAge(age);
+    }
+
+    @Override
+    public void action(World w){
+        Random rand = new Random();
+        if(rand.nextDouble(100) <= 10){
+            super.action(w);
+        }
     }
 }
