@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18ee1979-2c04-4d2d-a721-6de720f16edf" name="Changes" comment="Added file handling methods and legend drawer for specified map">
+    <list default="true" id="18ee1979-2c04-4d2d-a721-6de720f16edf" name="Changes" comment="Sorting method, animals superpowers">
+      <change afterPath="$PROJECT_DIR$/src/UI/AddOrganismWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../C++/save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../C++/save.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Organism.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Plant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/SimulationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/SimulationWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/StartWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/StartWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,24 +48,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\micha\Desktop\Politechnika\Studia_II_Rok\I_semestr\programowanie_obiektowe\LAB_OTWARTY\JAVA\World\src" />
@@ -112,7 +109,11 @@
       <workItem from="1737195776827" duration="1112000" />
       <workItem from="1737196974787" duration="13006000" />
       <workItem from="1737246916914" duration="2278000" />
-      <workItem from="1737394249279" duration="4646000" />
+      <workItem from="1737394249279" duration="10861000" />
+      <workItem from="1737468618665" duration="4799000" />
+      <workItem from="1737490237641" duration="1119000" />
+      <workItem from="1737878183146" duration="7832000" />
+      <workItem from="1737887127770" duration="2329000" />
     </task>
     <task id="LOCAL-00001" summary="Window definition in Java project">
       <option name="closed" value="true" />
@@ -178,7 +179,31 @@
       <option name="project" value="LOCAL" />
       <updated>1737213352642</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed file handling, and added creating reading save from existing file">
+      <option name="closed" value="true" />
+      <created>1737403008687</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1737403008687</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fixed bug, when animal was attacking plant, and it was removing every instance of plant in the list">
+      <option name="closed" value="true" />
+      <created>1737474396201</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1737474396201</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Sorting method, animals superpowers">
+      <option name="closed" value="true" />
+      <created>1737886089106</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1737886089106</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,15 +217,18 @@
     <MESSAGE value="Implemented random map generator and showing my organisms on the map function" />
     <MESSAGE value="Implemented organisms collisions and multiplication" />
     <MESSAGE value="Added file handling methods and legend drawer for specified map" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added file handling methods and legend drawer for specified map" />
+    <MESSAGE value="Fixed file handling, and added creating reading save from existing file" />
+    <MESSAGE value="Fixed bug, when animal was attacking plant, and it was removing every instance of plant in the list" />
+    <MESSAGE value="Sorting method, animals superpowers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sorting method, animals superpowers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/UI/SimulationWindow.java</url>
-          <line>155</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/src/Classes/Animal.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

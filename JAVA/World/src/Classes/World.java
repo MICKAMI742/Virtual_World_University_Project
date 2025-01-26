@@ -1,4 +1,6 @@
 package Classes;
+import UI.AddOrganismWindow;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
@@ -14,7 +16,7 @@ public class World {
     private int width, height;
     private int numOfBorn = 0;
     private int numOfDead = 0;
-    final private JButton[][] buttons;
+    private JButton[][] buttons = null;
 
 
     public void firstTurn(){
@@ -54,8 +56,11 @@ public class World {
             for(int j = 0; j < height; j++){
                 JButton button = new JButton();
                 button.setBackground(Color.WHITE);
+                final int x = i;
+                final int y = j;
                 button.addActionListener(e -> {
-                    addOrganismByChoice();
+
+                    addOrganismByChoice(x, y);
                 });
                 buttons[i][j] = button;
                 panel.add(button);
@@ -93,8 +98,9 @@ public class World {
             this.organisms = new ArrayList<>();
             this.toRemove = new ArrayList<>();
             this.toAdd = new ArrayList<>();
+            this.buttons = new JButton[width][height];
             sortByInitiativeAndAge();
-        }catch(NumberFormatException e){
+        }catch(Exception e){
             JFrame frame = new JFrame();
             // Obsługa błędu, jeśli dane nie są liczbami
             JOptionPane.showMessageDialog(frame,
@@ -102,7 +108,6 @@ public class World {
                     "Błąd",
                     JOptionPane.ERROR_MESSAGE);
         }
-        buttons = new JButton[width][height];
     }
 
     public void addOrganism(Organism o){
@@ -110,11 +115,8 @@ public class World {
         numOfBorn = toAdd.size();
     }
 
-    public void addOrganismByChoice(){
-//        JFrame frame = new JFrame("Wybierz zwierze ktore chcesz dodac");
-//        JPanel panel = new JPanel();
-//        frame.add(panel);
-        System.out.println("addOrganismByChoice");
+    public void addOrganismByChoice(int x, int y){
+        AddOrganismWindow window = new AddOrganismWindow(x,y, this);
     }
 
     public int getWidth(){
